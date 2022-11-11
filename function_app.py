@@ -1,6 +1,13 @@
-@app.function_name(name="BusStationAPI")
-@app.route(route="req")
+# function_app.py
+import azure.functions as func
 
-def main(req):
-    user = req.params.get('user')
-    return f'Hello, {user}!'
+
+@app.write_blob(arg_name="msg", path="output-container/{name}",
+                connection="AzureWebJobsStorage")
+
+def test_function(req: func.HttpRequest,
+                  msg: func.Out[str]) -> str:
+
+    message = req.params.get('body')
+    msg.set(message)
+    return message
