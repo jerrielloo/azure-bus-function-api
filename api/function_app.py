@@ -3,6 +3,7 @@ import logging
 
 app = func.FunctionApp()
 
+
 # Learn more at aka.ms/pythonprogrammingmodel
 
 # Get started by running the following code to create a function using a HTTP trigger.
