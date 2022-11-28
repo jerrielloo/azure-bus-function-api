@@ -7,9 +7,11 @@ import mysql.connector
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
-    busId = req.params.get('busId')
-    busStopId = req.params.get('busStopId')
-    timeStamps = req.params.get('timeStamps')
+    busID = req.params.get('busID')
+    stationID = req.params.get('stationID')
+    interactionDate = req.params.get('interactionDate')
+    departureDate = req.params.get('departureDate')
+    arrivalDate = req.params.get('arrivalDate')
 
     host='dockerlab.westeurope.cloudapp.azure.com'
     port=3306
@@ -21,9 +23,12 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     cursor = cnx.cursor()
 
-    print("------TESING CONNECTION TO DATABASE-----")
-    sql_str = "SELECT now();"
-    rs=cursor.executive(sql_str)
+    sql_str = f"INSERT INTO BusArrivals(Bus, Station, InteractionDate, ArrivalTime, DepartureTime) VALUES ({busID}, {stationID}, '{interactionDate}', '{arrivalDate}', '{departureDate}')"
+    rs=cursor.execute(sql_str)
+    cnx.commit()
+
+    sql_str="SELECT * FROM BusArrivals"
+    rs=cursor.execute(sql_str)
     rs=cursor.fetchall()
 
     return rs

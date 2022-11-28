@@ -14,14 +14,15 @@ busId="32"
 timeDistance=("0" "3" "2" "5" "3" "4")
 
 counter=0
-while [ "$counter" -le 5 ]
-do
-    datenow=$(date -d "$datenow + ${timeDistance[counter]} minutes" +'%Y-%m-%dT%H:%M:%S%z')
-    sh ./busStationApiCall.sh "$busId" ${busLine1StationId[counter]} "$datenow"
-    ((counter++))
-    echo -e "\n"
-    sleep 2
-done
+# while [ "$counter" -le 1 ]
+# do
+datenow=$(date -d "$datenow + ${timeDistance[counter]} minutes" +'%Y-%m-%dT%H:%M:%S%z')
+# sh ./busStationApiCall.sh "$busId" ${busLine1StationId[counter]} "$datenow" "$dateNow" "$dateNow"
+sh ./busStationApiCall.sh "$busId" $busLine1StationId[0] "$datenow" "$dateNow" "$dateNow"
+# ((counter++))
+# echo -e "\n"
+# sleep 2
+# done
 
 echo -e "\n\nEnd of BusStationApiCall"
 
