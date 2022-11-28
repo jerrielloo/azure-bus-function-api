@@ -31,7 +31,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     rs=cursor.execute(sql_str)
     rs=cursor.fetchall()
 
-    return rs
+    return str(rs)
 
 
     # if busId and busStopId and timeStamps:

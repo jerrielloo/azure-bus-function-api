@@ -14,8 +14,14 @@ print("------TESING CONNECTION TO DATABASE-----")
 # sql_str = "SELECT * FROM BusArrivals;"
 # rs=cursor.execute(sql_str)
 # rs=cursor.fetchall()
+busID = 23 
+stationID = 32
+interactionDate = "2008-11-11 13:23:44"
+departureDate = "2008-11-11 13:23:44"
+arrivalDate ="2008-11-11 13:23:44"
 
-sql_str = "INSERT INTO BusArrivals(Bus, Station, InteractionDate,ArrivalTime, DepartureTime) VALUES (32, 24, '2008-11-11 13:23:44', '2008-11-11 13:23:44', '2008-11-11 13:23:44')"
+sql_str = f"INSERT INTO BusArrivals(Bus, Station, InteractionDate, ArrivalTime, DepartureTime) VALUES ({busID}, {stationID}, '{interactionDate}', '{arrivalDate}', '{departureDate}')"
+# sql_str = "INSERT INTO BusArrivals(Bus, Station, InteractionDate,ArrivalTime, DepartureTime) VALUES (32, 24, '2008-11-11 13:23:44', '2008-11-11 13:23:44', '2008-11-11 13:23:44')"
 rs=cursor.execute(sql_str)
 cnx.commit()
 
