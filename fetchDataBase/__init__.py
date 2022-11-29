@@ -16,6 +16,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     password='1KwKNLcjP_132ngp_7kj4P5v775v8t5vQc-MQXXQjsQ'
     database='CC_4'
 
+    print(os.getenv("host"))
     cnx = mysql.connector.connect(user=username, password=password, host=host, database=database)
 
     cursor = cnx.cursor()
@@ -29,5 +30,5 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     rs_route =cursor.fetchall()
 
 
-    return str({"station": rs_station, "route": rs_route})
+    return rs_station
 

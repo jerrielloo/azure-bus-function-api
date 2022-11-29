@@ -14,7 +14,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     departureDate = req.params.get('departureDate')
     arrivalDate = req.params.get('arrivalDate')
 
-    host= os.getenv('host')
+    host = 'dockerlab.westeurope.cloudapp.azure.com'
     port=3306
     username='CC_4'
     password='1KwKNLcjP_132ngp_7kj4P5v775v8t5vQc-MQXXQjsQ'
@@ -24,9 +24,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     cursor = cnx.cursor()
 
-    # sql_str = f"INSERT INTO BusArrivals(Bus, Station, InteractionDate, ArrivalTime, DepartureTime) VALUES ({busID}, {stationID}, '{interactionDate}', '{arrivalDate}', '{departureDate}')"
-    # rs=cursor.execute(sql_str)
-    # cnx.commit()
+    sql_str = f"INSERT INTO BusArrivals(Bus, Station, ArrivalTime, DepartureTime) VALUES ({busID}, {stationID}, '{arrivalDate}', '{departureDate}')"
+    rs=cursor.execute(sql_str)
+    cnx.commit()
 
     sql_str="SELECT * FROM BusArrivals"
     rs=cursor.execute(sql_str)
