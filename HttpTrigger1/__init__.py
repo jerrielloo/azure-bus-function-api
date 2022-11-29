@@ -2,6 +2,7 @@ import logging
 
 import azure.functions as func
 import mysql.connector
+import os
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -13,7 +14,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     departureDate = req.params.get('departureDate')
     arrivalDate = req.params.get('arrivalDate')
 
-    host='dockerlab.westeurope.cloudapp.azure.com'
+    host= os.getenv('host')
     port=3306
     username='CC_4'
     password='1KwKNLcjP_132ngp_7kj4P5v775v8t5vQc-MQXXQjsQ'

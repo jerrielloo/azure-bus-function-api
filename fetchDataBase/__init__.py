@@ -29,5 +29,5 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     rs_route =cursor.fetchall()
 
 
-    return json.dumps({"station": rs_station, "route": rs_route})
+    return str({"station": rs_station, "route": rs_route})
 

@@ -39,6 +39,6 @@ rs_route =cursor.fetchall()
 
 
 # print(json.dumps({"station": rs_station, "route": rs_route}))
-print({"station": rs_station, "route": rs_route})
+print(str({"station": rs_station, "route": rs_route}))
 
 # print(rs)
