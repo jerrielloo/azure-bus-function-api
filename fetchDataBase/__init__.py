@@ -27,14 +27,18 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         rs_route =cursor.execute(sql_str_route)
         rs_route =cursor.fetchall()
 
-        if rs_route and rs_station:
+        sql_str_line="SELECT * FROM Line"
+        rs_line =cursor.execute(sql_str_line)
+        rs_line =cursor.fetchall()
+
+        if rs_route and rs_station and rs_line:
             return func.HttpResponse(
-                    json.dumps({"station": rs_station, "route": rs_route}),
+                    json.dumps({"station": rs_station, "route": rs_route, "line": rs_line}),
                     status_code=200
                 )
         else:
             return func.HttpResponse(
-                    "Either station or route has no results",
+                    "Either station or route or line has no results",
                     status_code=404
                 )
 
