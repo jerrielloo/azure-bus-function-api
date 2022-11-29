@@ -114,6 +114,7 @@
 <script type="module">
     import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 
+
     createApp({
         data() {
             return {
@@ -131,8 +132,15 @@
                     console.log(response)
                 })
         }
+      },
+      async mounted() {
+        this.fromBusStop = await axios.get("https://httpbin.org/get")
+                .then(function(response){
+                    console.log(response)
+                    return response
+                })
       }
-    }).mount('#app')
+    }).mount('#app') 
   </script>
 
 <style>

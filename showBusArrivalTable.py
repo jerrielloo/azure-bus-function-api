@@ -16,5 +16,5 @@ sql_str="SELECT * FROM BusArrivals"
 rs=cursor.execute(sql_str)
 rs=cursor.fetchall()
 
-print(type(rs))
-print(rs)
+# print(type(rs))
+print(len(rs))
