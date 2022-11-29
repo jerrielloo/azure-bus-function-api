@@ -15,30 +15,30 @@ print("------TESING CONNECTION TO DATABASE-----")
 # sql_str = "SELECT * FROM BusArrivals;"
 # rs=cursor.execute(sql_str)
 # rs=cursor.fetchall()
-busID = 32
+busID = 9
 stationID = 110
-interactionDate = "2008-11-11 13:23:44"
-departureDate = "2008-11-11 13:23:44"
-arrivalDate ="2008-11-11 13:23:44"
+# interactionDate = "2008-11-11 13:23:44"
+departureDate = "2011-10-05T14:48:00.000Z"
+arrivalDate ="2011-10-05T14:48:00.000Z"
 
-# sql_str = f"INSERT INTO BusArrivals(Bus, Station, InteractionDate, ArrivalTime, DepartureTime) VALUES ({busID}, {stationID}, '{interactionDate}', '{arrivalDate}', '{departureDate}')"
+sql_str = f"INSERT INTO BusArrivals(Bus, Station, ArrivalTime, DepartureTime) VALUES ({busID}, {stationID}, '{arrivalDate}', '{departureDate}')"
 # # sql_str = "INSERT INTO BusArrivals(Bus, Station, InteractionDate,ArrivalTime, DepartureTime) VALUES (32, 24, '2008-11-11 13:23:44', '2008-11-11 13:23:44', '2008-11-11 13:23:44')"
-# rs=cursor.execute(sql_str)
-# cnx.commit()
+rs=cursor.execute(sql_str)
+cnx.commit()
 
 # sql_str="SELECT * FROM Bus"
 # rs=cursor.execute(sql_str)
 # rs=cursor.fetchall()
-sql_str_station="SELECT * FROM Station"
-rs_station=cursor.execute(sql_str_station)
-rs_station =cursor.fetchall()
+# sql_str_station="SELECT * FROM Station"
+# rs_station=cursor.execute(sql_str_station)
+# rs_station =cursor.fetchall()
 
-sql_str_route="SELECT * FROM Route"
+sql_str_route="SELECT * FROM BusArrivals"
 rs_route =cursor.execute(sql_str_route)
 rs_route =cursor.fetchall()
 
 
 # print(json.dumps({"station": rs_station, "route": rs_route}))
-print(str({"station": rs_station, "route": rs_route}))
+# print(str({"station": rs_station, "route": rs_route}))
 
-# print(rs)
+print(rs_route)

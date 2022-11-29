@@ -16,19 +16,24 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     password='1KwKNLcjP_132ngp_7kj4P5v775v8t5vQc-MQXXQjsQ'
     database='CC_4'
 
-    print(os.getenv("host"))
-    cnx = mysql.connector.connect(user=username, password=password, host=host, database=database)
+    try:
+        cnx = mysql.connector.connect(user=username, password=password, host=host, database=database)
 
-    cursor = cnx.cursor()
+        cursor = cnx.cursor()
 
-    sql_str_station="SELECT * FROM Station"
-    rs_station=cursor.execute(sql_str_station)
-    rs_station =cursor.fetchall()
+        sql_str_station="SELECT * FROM Station"
+        rs_station=cursor.execute(sql_str_station)
+        rs_station =cursor.fetchall()
 
-    sql_str_route="SELECT * FROM Route"
-    rs_route =cursor.execute(sql_str_route)
-    rs_route =cursor.fetchall()
+        sql_str_route="SELECT * FROM Route"
+        rs_route =cursor.execute(sql_str_route)
+        rs_route =cursor.fetchall()
+
+        return rs_station
+        
+    except Exception as e:
+        return e
 
 
-    return rs_station
+    
 
