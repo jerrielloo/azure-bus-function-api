@@ -29,10 +29,16 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         # rs_route =cursor.execute(sql_str_route)
         # rs_route =cursor.fetchall()
 
-        return rs_station
+        return func.HttpResponse(
+             str(rs_station), 
+             status_code=200
+        )
 
     except Exception as e:
-        return e
+        return func.HttpResponse(
+             str(e), 
+             status_code=500
+        )
 
 
     
