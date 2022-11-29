@@ -23,9 +23,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     cursor = cnx.cursor()
 
-    sql_str = f"INSERT INTO BusArrivals(Bus, Station, InteractionDate, ArrivalTime, DepartureTime) VALUES ({busID}, {stationID}, '{interactionDate}', '{arrivalDate}', '{departureDate}')"
-    rs=cursor.execute(sql_str)
-    cnx.commit()
+    # sql_str = f"INSERT INTO BusArrivals(Bus, Station, InteractionDate, ArrivalTime, DepartureTime) VALUES ({busID}, {stationID}, '{interactionDate}', '{arrivalDate}', '{departureDate}')"
+    # rs=cursor.execute(sql_str)
+    # cnx.commit()
 
     sql_str="SELECT * FROM BusArrivals"
     rs=cursor.execute(sql_str)
