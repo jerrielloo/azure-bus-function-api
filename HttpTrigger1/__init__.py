@@ -28,11 +28,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         rs=cursor.execute(sql_str)
         cnx.commit()
 
-        sql_str="SELECT * FROM BusArrivals WHERE ArrivalTime == arrivalDate"
+        sql_str=f"SELECT * FROM BusArrivals WHERE Station = {stationID}"
         rs=cursor.execute(sql_str)
         rs=cursor.fetchall()
 
-        return str(rs)
+        return "Bus ID: " + rs[0] +"\nStation ID: " + rs[1] + "\nArrival Time: " + rs[2] + "\nDeparture Time: " + rs[3]
     except Exception as e:
         return e
 

@@ -1,5 +1,7 @@
 import mysql.connector
 import json
+from datetime import datetime
+from datetime import date
 
 host='dockerlab.westeurope.cloudapp.azure.com'
 port=3306
@@ -40,16 +42,25 @@ arrivalDate ="2011-10-05T14:48:00.000Z"
 
 # print(json.dumps({"station": rs_station, "route": rs_route}))
 # print(str({"station": rs_station, "route": rs_route}))
-try:
-    sql_str_station="SELECT * FROM Station"
-    rs_station=cursor.execute(sql_str_station)
-    rs_station =cursor.fetchall()
+# try:
+#     sql_str_station="SELECT * FROM Station"
+#     rs_station=cursor.execute(sql_str_station)
+#     rs_station =cursor.fetchall()
 
-    sql_str_route="SELECT * FROM Route"
-    rs_route =cursor.execute(sql_str_route)
-    rs_route =cursor.fetchall()
+#     sql_str_route="SELECT * FROM Route"
+#     rs_route =cursor.execute(sql_str_route)
+#     rs_route =cursor.fetchall()
     
-    print(rs_station)
-except Exception as e:
-    print(e)
+#     print(rs_station)
+# except Exception as e:
+#     print(e)
 
+# datetoTest = datetime.combine(datetime.datetime("2022-11-29"),datetime("20:03:36"))
+# format = "%Y-%m-%d %H:%M:%S"
+# datetoTest = datetime.strptime("2022-11-29 20:03:36", format)
+# print(type(datetoTest))
+sql_str_station=f"SELECT * FROM BusArrivals WHERE Station = 207"
+rs_station=cursor.execute(sql_str_station)
+rs_station =cursor.fetchall()
+
+print(rs_station)
