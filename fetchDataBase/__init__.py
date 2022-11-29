@@ -2,6 +2,7 @@ import logging
 
 import azure.functions as func
 import mysql.connector
+import json
 import os
 
 
@@ -28,7 +29,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
         if rs_route and rs_station:
             return func.HttpResponse(
-                    str({"station": rs_station, "route": rs_route}),
+                    json.dumps({"station": rs_station, "route": rs_route}),
                     status_code=200
                 )
         else:
