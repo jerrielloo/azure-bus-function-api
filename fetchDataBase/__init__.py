@@ -21,16 +21,16 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
         cursor = cnx.cursor()
 
-        sql_str_station="SELECT * FROM Station"
-        rs_station=cursor.execute(sql_str_station)
-        rs_station =cursor.fetchall()
+        # sql_str_station="SELECT * FROM Station"
+        # rs_station=cursor.execute(sql_str_station)
+        # rs_station =cursor.fetchall()
 
         # sql_str_route="SELECT * FROM Route"
         # rs_route =cursor.execute(sql_str_route)
         # rs_route =cursor.fetchall()
 
         return func.HttpResponse(
-             str(rs_station), 
+             "hello", 
              status_code=200
         )
 
