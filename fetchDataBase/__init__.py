@@ -2,7 +2,6 @@ import logging
 
 import azure.functions as func
 import mysql.connector
-import json
 import os
 
 
@@ -29,16 +28,10 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         # rs_route =cursor.execute(sql_str_route)
         # rs_route =cursor.fetchall()
 
-        return func.HttpResponse(
-             "hello", 
-             status_code=200
-        )
+        return "hello"
 
     except Exception as e:
-        return func.HttpResponse(
-             str(e), 
-             status_code=500
-        )
+        return "error occurred"
 
 
     
