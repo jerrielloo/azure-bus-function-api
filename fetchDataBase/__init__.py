@@ -31,8 +31,5 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     # return json.dumps({"station": rs_station, "route": rs_route})
     # return host
-    return func.HttpResponse(
-             host,
-             status_code=200
-        )
+    return host
 
