@@ -27,7 +27,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         rs_route =cursor.execute(sql_str_route)
         rs_route =cursor.fetchall()
 
-        return {"station": rs_station, "route": rs_route}
+        return str({"station": rs_station, "route": rs_route})
 
     except Exception as e:
         return str(e)
