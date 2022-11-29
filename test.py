@@ -59,8 +59,9 @@ arrivalDate ="2011-10-05T14:48:00.000Z"
 # format = "%Y-%m-%d %H:%M:%S"
 # datetoTest = datetime.strptime("2022-11-29 20:03:36", format)
 # print(type(datetoTest))
-sql_str_station=f"SELECT * FROM BusArrivals WHERE Station = 207"
+sql_str_station=f"SELECT * FROM BusArrivals"
 rs_station=cursor.execute(sql_str_station)
 rs_station =cursor.fetchall()
 
-print("Bus ID: " + str(rs_station[0][0]) +"\nStation ID: " + str(rs_station[0][1]) + "\nArrival Time: " + str(rs_station[0][2]) + "\nDeparture Time: " + str(rs_station[0][3]))
+print(rs_station)
+# print("Bus ID: " + str(rs_station[0][0]) +"\nStation ID: " + str(rs_station[0][1]) + "\nArrival Time: " + str(rs_station[0][2]) + "\nDeparture Time: " + str(rs_station[0][3]))
