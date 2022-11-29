@@ -8,11 +8,10 @@ import os
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
-    host='dockerlab.westeurope.cloudapp.azure.com'
-    port=3306
-    username='CC_4'
-    password='1KwKNLcjP_132ngp_7kj4P5v775v8t5vQc-MQXXQjsQ'
-    database='CC_4'
+    host = os.environ["MYSQLCONNSTR_host"]
+    username=os.environ["MYSQLCONNSTR_username"]
+    password=os.environ["MYSQLCONNSTR_password"]
+    database=os.environ["MYSQLCONNSTR_database"]
 
     try:
         cnx = mysql.connector.connect(user=username, password=password, host=host, database=database)
@@ -27,10 +26,22 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         rs_route =cursor.execute(sql_str_route)
         rs_route =cursor.fetchall()
 
-        return str({"station": rs_station, "route": rs_route})
+        if rs_route and rs_station:
+            return func.HttpResponse(
+                    str({"station": rs_station, "route": rs_route}),
+                    status_code=200
+                )
+        else:
+            return func.HttpResponse(
+                    "Either station or route has no results",
+                    status_code=404
+                )
 
     except Exception as e:
-        return str(e)
+        return func.HttpResponse(
+            str(e),
+            status_code=500
+        )
 
 
     
