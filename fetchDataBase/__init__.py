@@ -16,13 +16,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     database='CC_4'
 
     try:
-        cnx = mysql.connector.connect(user=username, password=password, host=host, database=database)
+        # cnx = mysql.connector.connect(user=username, password=password, host=host, database=database)
 
-        cursor = cnx.cursor()
+        # cursor = cnx.cursor()
 
-        sql_str_station="SELECT * FROM Station"
-        rs_station=cursor.execute(sql_str_station)
-        rs_station =cursor.fetchall()
+        # sql_str_station="SELECT * FROM Station"
+        # rs_station=cursor.execute(sql_str_station)
+        # rs_station =cursor.fetchall()
 
         # sql_str_route="SELECT * FROM Route"
         # rs_route =cursor.execute(sql_str_route)
