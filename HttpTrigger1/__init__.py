@@ -30,10 +30,20 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         sql_str=f"SELECT * FROM BusArrivals WHERE Station = {stationID}"
         rs=cursor.execute(sql_str)
         rs=cursor.fetchall()
+
         if rs:
-            return "Bus ID: " + str(rs[0][0]) +"\nStation ID: " + str(rs[0][1]) + "\nArrival Time: " + str(rs[0][2]) + "\nDeparture Time: " + str(rs[0][3])
+            return func.HttpResponse(
+                "Bus ID: " + str(rs[0][0]) +"\nStation ID: " + str(rs[0][1]) + "\nArrival Time: " + str(rs[0][2]) + "\nDeparture Time: " + str(rs[0][3]),
+                status_code = 200
+            )
         else:
-            return "No result found"
+            return func.HttpResponse(
+                "No result found",
+                status_code = 404
+            )
     except Exception as e:
-        return e
+        return func.HttpResponse(
+            str(e),
+            status_code=500
+        )
 
