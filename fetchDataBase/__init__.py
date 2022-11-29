@@ -2,6 +2,7 @@ import logging
 
 import azure.functions as func
 import mysql.connector
+import json
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -26,5 +27,5 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     rs_route =cursor.fetchall()
 
 
-    return {"station": rs_station, "route": rs_route}
+    return json.dumps({"station": rs_station, "route": rs_route})
 

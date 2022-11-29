@@ -1,4 +1,5 @@
 import mysql.connector
+import json
 
 host='dockerlab.westeurope.cloudapp.azure.com'
 port=3306
@@ -25,8 +26,19 @@ arrivalDate ="2008-11-11 13:23:44"
 # rs=cursor.execute(sql_str)
 # cnx.commit()
 
-sql_str="SELECT * FROM Bus"
-rs=cursor.execute(sql_str)
-rs=cursor.fetchall()
+# sql_str="SELECT * FROM Bus"
+# rs=cursor.execute(sql_str)
+# rs=cursor.fetchall()
+sql_str_station="SELECT * FROM Station"
+rs_station=cursor.execute(sql_str_station)
+rs_station =cursor.fetchall()
 
-print(rs)
+sql_str_route="SELECT * FROM Route"
+rs_route =cursor.execute(sql_str_route)
+rs_route =cursor.fetchall()
+
+
+# print(json.dumps({"station": rs_station, "route": rs_route}))
+print({"station": rs_station, "route": rs_route})
+
+# print(rs)
