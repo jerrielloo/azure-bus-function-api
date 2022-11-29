@@ -28,7 +28,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         rs=cursor.execute(sql_str)
         cnx.commit()
 
-        sql_str="SELECT * FROM BusArrivals"
+        sql_str="SELECT * FROM BusArrivals WHERE ArrivalTime == arrivalDate"
         rs=cursor.execute(sql_str)
         rs=cursor.fetchall()
 
