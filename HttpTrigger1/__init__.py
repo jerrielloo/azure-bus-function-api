@@ -14,7 +14,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     arrivalDate = req.params.get('arrivalDate')
 
     # host = 'dockerlab.westeurope.cloudapp.azure.com'
-    host = os.environ["SQLCONNSTR_host"]
+    host = os.environ["MYSQLCONNSTR_host"]
     port=3306
     username='CC_4'
     password='1KwKNLcjP_132ngp_7kj4P5v775v8t5vQc-MQXXQjsQ'
