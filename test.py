@@ -63,4 +63,4 @@ sql_str_station=f"SELECT * FROM BusArrivals WHERE Station = 207"
 rs_station=cursor.execute(sql_str_station)
 rs_station =cursor.fetchall()
 
-print(rs_station)
+print("Bus ID: " + str(rs_station[0][0]) +"\nStation ID: " + str(rs_station[0][1]) + "\nArrival Time: " + str(rs_station[0][2]) + "\nDeparture Time: " + str(rs_station[0][3]))

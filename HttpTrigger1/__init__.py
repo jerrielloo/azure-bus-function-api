@@ -32,7 +32,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         rs=cursor.execute(sql_str)
         rs=cursor.fetchall()
 
-        return "Bus ID: " + rs[0] +"\nStation ID: " + rs[1] + "\nArrival Time: " + rs[2] + "\nDeparture Time: " + rs[3]
+        return "Bus ID: " + str(rs[0][0]) +"\nStation ID: " + str(rs[0][1]) + "\nArrival Time: " + str(rs[0][2]) + "\nDeparture Time: " + str(rs[0][3])
     except Exception as e:
         return e
 
